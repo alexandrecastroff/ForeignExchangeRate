@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34701.34
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForeignExchangeRates.Api", "ForeignExchangeRates\ForeignExchangeRates.Api.csproj", "{90ED3352-F67D-48FA-AC0E-4FD90FD3F7E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ForeignExchangeRates.Api", "ForeignExchangeRates\ForeignExchangeRates.Api.csproj", "{90ED3352-F67D-48FA-AC0E-4FD90FD3F7E3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Presentation", "1 - Presentation", "{CB9C525C-3579-4E00-B73F-514CB75853BC}"
 EndProject
@@ -17,19 +17,27 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.1 - Application.Services"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.2 - Application.Gateways", "2.2 - Application.Gateways", "{D57DD67B-5A50-4037-B008-5000B7BB6996}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Domain", "Domain\Application.Domain.csproj", "{576A460C-FCE0-477D-ABAA-7F82BF8B9C2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Domain", "Domain\Application.Domain.csproj", "{576A460C-FCE0-477D-ABAA-7F82BF8B9C2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Services", "Application.Services\Application.Services.csproj", "{D0401AC9-5A58-481B-847A-2DF12DF1C59A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Services", "Application.Services\Application.Services.csproj", "{D0401AC9-5A58-481B-847A-2DF12DF1C59A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Gateways", "Application.Gateways\Application.Gateways.csproj", "{C1F4678A-CACF-4416-BAF7-0DE60A0BDF21}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Gateways", "Application.Gateways\Application.Gateways.csproj", "{C1F4678A-CACF-4416-BAF7-0DE60A0BDF21}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{262FC2A9-9E99-4155-AB6F-A09D672CB4E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Data\Data.csproj", "{262FC2A9-9E99-4155-AB6F-A09D672CB4E1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.3 - Application.Domain", "2.3 - Application.Domain", "{445DA3BC-378B-4FA2-B8F7-15C97A7B553F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Repository", "Data.Repository\Data.Repository.csproj", "{D216B002-A083-4CDB-A2A9-9F6E7EB25F21}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data.Repository", "Data.Repository\Data.Repository.csproj", "{D216B002-A083-4CDB-A2A9-9F6E7EB25F21}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrossInfrastructure", "CrossInfrastructure\CrossInfrastructure.csproj", "{18D4BC9A-1000-4888-BC37-4A24E50842C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrossInfrastructure", "CrossInfrastructure\CrossInfrastructure.csproj", "{18D4BC9A-1000-4888-BC37-4A24E50842C6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{B03EFAD9-F9CF-44CE-865D-20C26D2D089A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForeignExchangeRates.Api.Tests", "UnitTests\ForeignExchangeRates.Api.Tests\ForeignExchangeRates.Api.Tests.csproj", "{582A23D5-BDBD-4567-990F-EA6EBFBDFAE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Tests", "UnitTests\DataTests\Data.Tests.csproj", "{C269893E-1049-420E-9398-C88AB06A75F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Services.Tests", "UnitTests\Application.Services.Tests\Application.Services.Tests.csproj", "{846804D1-7472-4AB6-83DC-38BE7EB03C49}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,6 +73,18 @@ Global
 		{18D4BC9A-1000-4888-BC37-4A24E50842C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18D4BC9A-1000-4888-BC37-4A24E50842C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18D4BC9A-1000-4888-BC37-4A24E50842C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{582A23D5-BDBD-4567-990F-EA6EBFBDFAE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{582A23D5-BDBD-4567-990F-EA6EBFBDFAE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{582A23D5-BDBD-4567-990F-EA6EBFBDFAE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{582A23D5-BDBD-4567-990F-EA6EBFBDFAE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C269893E-1049-420E-9398-C88AB06A75F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C269893E-1049-420E-9398-C88AB06A75F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C269893E-1049-420E-9398-C88AB06A75F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C269893E-1049-420E-9398-C88AB06A75F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{846804D1-7472-4AB6-83DC-38BE7EB03C49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{846804D1-7472-4AB6-83DC-38BE7EB03C49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{846804D1-7472-4AB6-83DC-38BE7EB03C49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{846804D1-7472-4AB6-83DC-38BE7EB03C49}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -80,6 +100,9 @@ Global
 		{445DA3BC-378B-4FA2-B8F7-15C97A7B553F} = {EB62A98F-FF77-41CC-93BF-D58268768E36}
 		{D216B002-A083-4CDB-A2A9-9F6E7EB25F21} = {BD2D7C18-27FA-437B-8A1B-CEA850A9CDD9}
 		{18D4BC9A-1000-4888-BC37-4A24E50842C6} = {7FD88F6D-EE89-44CA-B7AE-DFEF565AF4A8}
+		{582A23D5-BDBD-4567-990F-EA6EBFBDFAE1} = {B03EFAD9-F9CF-44CE-865D-20C26D2D089A}
+		{C269893E-1049-420E-9398-C88AB06A75F6} = {B03EFAD9-F9CF-44CE-865D-20C26D2D089A}
+		{846804D1-7472-4AB6-83DC-38BE7EB03C49} = {B03EFAD9-F9CF-44CE-865D-20C26D2D089A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {737D7CB0-105C-4F1B-882A-744F0638BB76}
