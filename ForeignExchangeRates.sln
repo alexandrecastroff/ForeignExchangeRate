@@ -39,6 +39,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Tests", "UnitTests\Dat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Services.Tests", "UnitTests\Application.Services.Tests\Application.Services.Tests.csproj", "{846804D1-7472-4AB6-83DC-38BE7EB03C49}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.4 - Application.Messaging", "2.4 - Application.Messaging", "{DB86DA8D-9074-474C-8BC4-B7D6B233AB57}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Messaging", "Application.Messaging\Application.Messaging.csproj", "{209DF927-4BD6-499D-92B0-69F94FD0A8F4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -85,6 +89,10 @@ Global
 		{846804D1-7472-4AB6-83DC-38BE7EB03C49}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{846804D1-7472-4AB6-83DC-38BE7EB03C49}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{846804D1-7472-4AB6-83DC-38BE7EB03C49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{209DF927-4BD6-499D-92B0-69F94FD0A8F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{209DF927-4BD6-499D-92B0-69F94FD0A8F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{209DF927-4BD6-499D-92B0-69F94FD0A8F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{209DF927-4BD6-499D-92B0-69F94FD0A8F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -103,6 +111,8 @@ Global
 		{582A23D5-BDBD-4567-990F-EA6EBFBDFAE1} = {B03EFAD9-F9CF-44CE-865D-20C26D2D089A}
 		{C269893E-1049-420E-9398-C88AB06A75F6} = {B03EFAD9-F9CF-44CE-865D-20C26D2D089A}
 		{846804D1-7472-4AB6-83DC-38BE7EB03C49} = {B03EFAD9-F9CF-44CE-865D-20C26D2D089A}
+		{DB86DA8D-9074-474C-8BC4-B7D6B233AB57} = {EB62A98F-FF77-41CC-93BF-D58268768E36}
+		{209DF927-4BD6-499D-92B0-69F94FD0A8F4} = {DB86DA8D-9074-474C-8BC4-B7D6B233AB57}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {737D7CB0-105C-4F1B-882A-744F0638BB76}

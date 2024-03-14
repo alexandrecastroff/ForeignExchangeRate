@@ -1,6 +1,8 @@
 using Application.Gateways.Implementations;
+using Application.Messaging.Producers;
 using Application.Services;
 using CrossInfrastructure.Gateways;
+using CrossInfrastructure.Kafka;
 using CrossInfrastructure.Mongo;
 using CrossInfrastructure.Services;
 using Data.Repository.Mongo;
@@ -44,6 +46,10 @@ builder.Configuration.GetSection("MongoDatabaseSettings"));
 
 builder.Services.AddScoped<IMongoRepository, MongoRepository>();
 builder.Services.AddScoped<IExchangeRateGateway, ExchangeRateGateway>();
+
+builder.Services.Configure<KafkaSettings>(
+builder.Configuration.GetSection("Kafka"));
+builder.Services.AddSingleton<IForeignExchangeRateCreatedEventProducer, ForeignExchangeRateCreatedEventProducer>();
 builder.Services.AddScoped<IForeignExchangeRatesService, ForeignExchangeRatesService>();
 
 var app = builder.Build();

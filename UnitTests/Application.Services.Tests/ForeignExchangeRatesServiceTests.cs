@@ -2,6 +2,7 @@
 {
     using Application.Domain.Domain;
     using CrossInfrastructure.Gateways;
+    using CrossInfrastructure.Kafka;
     using CrossInfrastructure.Mongo;
     using Microsoft.Extensions.Logging;
     using Moq;
@@ -11,16 +12,19 @@
         private Mock<ILogger<ForeignExchangeRatesService>> loggerMock;
         private Mock<IExchangeRateGateway> exchangeRateGatewayMock;
         private Mock<IMongoRepository> mongoMock;
+        private Mock<IForeignExchangeRateCreatedEventProducer> eventProducerMock;
         private ForeignExchangeRatesService foreignExchangeRatesService;
 
         public ForeignExchangeRatesServiceTests()
         {
             loggerMock = new Mock<ILogger<ForeignExchangeRatesService>>();
             exchangeRateGatewayMock = new Mock<IExchangeRateGateway>();
+            eventProducerMock = new Mock<IForeignExchangeRateCreatedEventProducer>();
             mongoMock = new Mock<IMongoRepository>();
 
             this.foreignExchangeRatesService = new ForeignExchangeRatesService(
                 mongoMock.Object, exchangeRateGatewayMock.Object,
+                eventProducerMock.Object,
                 loggerMock.Object);
         }
 
@@ -119,6 +123,7 @@
             this.exchangeRateGatewayMock.Verify(x => x.GetForeignExchangeRate(It.IsAny<string>(), It.IsAny<string>()), Times.Once);
             this.mongoMock.Verify(x => x.GetAsync(It.IsAny<string>(), It.IsAny<string>()), Times.Once);
             this.mongoMock.Verify(x => x.CreateAsync(It.IsAny<ForeignExchangeRate>()), Times.Once);
+            this.eventProducerMock.Verify(x => x.ProduceAsync(It.IsAny<string>(), It.IsAny<string>()), Times.Once);
         }
     }
 }

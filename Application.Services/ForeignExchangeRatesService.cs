@@ -2,24 +2,29 @@
 {
     using Application.Domain.Domain;
     using CrossInfrastructure.Gateways;
+    using CrossInfrastructure.Kafka;
     using CrossInfrastructure.Mongo;
     using CrossInfrastructure.Services;
     using Microsoft.Extensions.Logging;
+    using System.Text.Json;
     using System.Threading.Tasks;
 
     public class ForeignExchangeRatesService : IForeignExchangeRatesService
     {
         private IMongoRepository mongoRepository;
         private IExchangeRateGateway exchangeRateGateway;
+        private readonly IForeignExchangeRateCreatedEventProducer eventProducer;
         private readonly ILogger<ForeignExchangeRatesService> _logger;
 
         public ForeignExchangeRatesService(
             IMongoRepository mongoRepository,
             IExchangeRateGateway exchangeRateGateway,
+            IForeignExchangeRateCreatedEventProducer eventProducer,
             ILogger<ForeignExchangeRatesService> logger)
         {
             this.mongoRepository = mongoRepository;
             this.exchangeRateGateway = exchangeRateGateway;
+            this.eventProducer = eventProducer;
             _logger = logger;
         }
 
@@ -38,6 +43,10 @@
                 {
                     // insert new rate on db
                     await this.mongoRepository.CreateAsync(exchangeRate).ConfigureAwait(false);
+
+                    var message = JsonSerializer.Serialize(exchangeRate);
+                    await this.eventProducer.ProduceAsync("ForeignExchangeRateUpdates", message).ConfigureAwait(false);
+
                     _logger.LogInformation($"{nameof(ForeignExchangeRatesService)}.{nameof(this.GetForeignExchangeRate)} - ForeignExchangeRate for pair {fromCurrency}|{toCurrency} inserted on DB.");
                 }
             }
