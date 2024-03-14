@@ -1,8 +1,8 @@
 ﻿namespace Data.Entities
 {
-    using MongoDB.Bson;
     using MongoDB.Bson.Serialization.Attributes;
 
+    [BsonIgnoreExtraElements]
     public class ForeignExchangeRateEntity
     {
         public string FromCurrency { get; set; }
