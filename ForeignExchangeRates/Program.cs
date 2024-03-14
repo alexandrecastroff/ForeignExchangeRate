@@ -49,6 +49,7 @@ builder.Services.AddScoped<IExchangeRateGateway, ExchangeRateGateway>();
 
 builder.Services.Configure<KafkaSettings>(
 builder.Configuration.GetSection("Kafka"));
+
 builder.Services.AddSingleton<IForeignExchangeRateCreatedEventProducer, ForeignExchangeRateCreatedEventProducer>();
 builder.Services.AddScoped<IForeignExchangeRatesService, ForeignExchangeRatesService>();
 

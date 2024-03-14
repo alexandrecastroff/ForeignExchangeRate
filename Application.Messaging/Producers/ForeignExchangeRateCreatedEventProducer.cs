@@ -2,6 +2,7 @@
 {
     using Confluent.Kafka;
     using CrossInfrastructure.Kafka;
+    using Microsoft.Extensions.Options;
     using System.Threading.Tasks;
 
     public class ForeignExchangeRateCreatedEventProducer : IForeignExchangeRateCreatedEventProducer
@@ -10,13 +11,13 @@
 
         private readonly IProducer<Null, string> _producer;
 
-        public ForeignExchangeRateCreatedEventProducer(KafkaSettings configuration)
+        public ForeignExchangeRateCreatedEventProducer(IOptions<KafkaSettings> configuration)
         {
-            _configuration = configuration;
+            _configuration = configuration.Value;
 
             var producerconfig = new ProducerConfig
             {
-                BootstrapServers = configuration.BootstrapServers
+                BootstrapServers = _configuration.BootstrapServers
             };
 
             _producer = new ProducerBuilder<Null, string>(producerconfig).Build();

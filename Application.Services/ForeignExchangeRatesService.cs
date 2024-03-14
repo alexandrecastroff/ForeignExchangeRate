@@ -1,6 +1,7 @@
 ﻿namespace Application.Services
 {
     using Application.Domain.Domain;
+    using Application.Messaging.Models;
     using CrossInfrastructure.Gateways;
     using CrossInfrastructure.Kafka;
     using CrossInfrastructure.Mongo;
@@ -43,15 +44,28 @@
                 {
                     // insert new rate on db
                     await this.mongoRepository.CreateAsync(exchangeRate).ConfigureAwait(false);
-
-                    var message = JsonSerializer.Serialize(exchangeRate);
-                    await this.eventProducer.ProduceAsync("ForeignExchangeRateUpdates", message).ConfigureAwait(false);
+                    await PublishEvent(exchangeRate).ConfigureAwait(false);
 
                     _logger.LogInformation($"{nameof(ForeignExchangeRatesService)}.{nameof(this.GetForeignExchangeRate)} - ForeignExchangeRate for pair {fromCurrency}|{toCurrency} inserted on DB.");
                 }
             }
 
             return exchangeRate;
+        }
+
+        private async Task PublishEvent(ForeignExchangeRate? exchangeRate)
+        {
+            var objectMessage = new ForeignExchangeRateCreated
+            {
+                FromCurrency = exchangeRate.FromCurrency,
+                ToCurrency = exchangeRate.ToCurrency,
+                Bid = exchangeRate.Bid.ToString(),
+                Ask = exchangeRate.Ask.ToString(),
+                CreationDate = DateTimeOffset.Now,
+            };
+
+            var message = JsonSerializer.Serialize(objectMessage);
+            await this.eventProducer.ProduceAsync("foreignexchangerateupdates-1", message).ConfigureAwait(false);
         }
 
         public async Task DeleteForeignExchangeRate(string fromCurrency, string toCurrency)
